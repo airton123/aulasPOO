@@ -1,16 +1,16 @@
 package emprestimos;
 
-
+import java.text.DecimalFormat;
 
 public class CalculoParcelas {
 
 	public final static double juros = 0.015;
 	private int parcelas;
 	private double valor;
-	 double[] cadaParcela = new double[100] ;
+	double[] cadaParcela = new double[300];
 	private double valorfinal;
 	double valorC;
-	
+	DecimalFormat numberFormat = new DecimalFormat("#.00");
 	public int getParcelas() {
 		return parcelas;
 	}
@@ -26,24 +26,7 @@ public class CalculoParcelas {
 	public void setValor(double valor) {
 		this.valor = valor;
 	}
-	
-	public void calcular() {
-		double x;
-		double y;
-		valorC = valor;
-		cadaParcela[0] = valorC;
-		for(int i = 1; i<=parcelas; i++) {
-			valorC = (valorC*juros)+valorC;
-			cadaParcela[i] = valorC;
-		}
-			this.valorfinal = this.valor* Math.pow((1+juros),parcelas);
-			
-			
-	
-		
-		
-		
-	}
+
 
 	public double getValorfinal() {
 		return valorfinal;
@@ -53,8 +36,21 @@ public class CalculoParcelas {
 		this.valorfinal = valorfinal;
 	}
 	
-		
+	
+	public void calcular() {
+
+		valorC = valor;
+		cadaParcela[0] = valorC;
+		for (int i = 1; i <= parcelas; i++) {
+			valorC = (valorC * juros) + valorC;
+			cadaParcela[i] = valorC;
+		}
+		this.valorfinal = this.valor * Math.pow((1 + juros), parcelas);
+
+	}
+	
+	public String toString(int i) {
+		return "Valor Emprestado: "+this.valor+"\n Em " + i + " Vezes" + "\n total = " + numberFormat.format(this.cadaParcela[i]) + " parcela = " + numberFormat.format(this.cadaParcela[i] / (i));
+	}
 
 }
-
-
