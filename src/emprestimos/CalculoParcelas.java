@@ -27,7 +27,6 @@ public class CalculoParcelas {
 		this.valor = valor;
 	}
 
-
 	public double getValorfinal() {
 		return valorfinal;
 	}
@@ -50,7 +49,7 @@ public class CalculoParcelas {
 	}
 	
 	public String toString(int i) {
-		return "Valor Emprestado: "+this.valor+"\n Em " + i + " Vezes" + "\n total = " + numberFormat.format(this.cadaParcela[i]) + " parcela = " + numberFormat.format(this.cadaParcela[i] / (i));
+		return "\n Em " + i + " Vezes " + "parcela = " + numberFormat.format(this.cadaParcela[i] / (i))+ " total = " + numberFormat.format(this.cadaParcela[i]) ;
 	}
 
 }
